@@ -1,0 +1,154 @@
+using System.Collections.Generic;
+
+namespace TelemetryServer.Identifiers.f121
+{
+    public enum TeamId
+    {
+        Mercedes = 0,
+        Ferrari = 1,
+        RedBullRacing = 2,
+        Williams = 3,
+        AstonMartin = 4,
+        Alpine = 5,
+        AlphaTauri = 6,
+        Haas = 7,
+        McLaren = 8,
+        AlfaRomeo = 9,
+        McLaren1988 = 10,
+        McLaren1991 = 11,
+        Williams1992 = 12,
+        Ferrari1995 = 13,
+        Williams1996 = 14,
+        McLaren1998 = 15,
+        Ferrari2002 = 16,
+        Ferrari2004 = 17,
+        Renault2006 = 18,
+        Ferrari2007 = 19,
+        McLaren2008 = 20,
+        RedBull2010 = 21,
+        McLaren1990 = 31,
+        Williams2003 = 38,
+        Brawn2009 = 39,
+        F1GenericCar = 41,
+        ArtGrandPrix19 = 42, // Atualizado para '19
+        CamposRacing19 = 43, // Atualizado para '19
+        Carlin19 = 44, // Atualizado para '19
+        SauberJuniorTeamByCharouz19 = 45, // Atualizado para '19
+        Dams19 = 46, // Atualizado para '19
+        UniVirtuosi19 = 47, // Atualizado para '19
+        MpMotorsport19 = 48, // Atualizado para '19
+        PremaRacing19 = 49, // Atualizado para '19
+        Trident19 = 50, // Atualizado para '19
+        BwtArden19 = 51, // Atualizado para '19
+        Benetton1994 = 53,
+        Benetton1995 = 54,
+        Ferrari2000 = 55,
+        Jordan1991 = 56,
+        Ferrari1990 = 63,
+        McLaren2010 = 64,
+        Ferrari2010 = 65,
+        ArtGrandPrix20 = 70,
+        CamposRacing20 = 71,
+        Carlin20 = 72,
+        Charouz20 = 73,
+        Dams20 = 74,
+        UniVirtuosi20 = 75,
+        MpMotorsport20 = 76,
+        PremaRacing20 = 77,
+        Trident20 = 78,
+        Bwt20 = 79,
+        Hitech20 = 80,
+        Mercedes2020 = 85,
+        Ferrari2020 = 86,
+        RedBull2020 = 87,
+        Williams2020 = 88,
+        RacingPoint2020 = 89,
+        Renault2020 = 90,
+        AlphaTauri2020 = 91,
+        Haas2020 = 92,
+        McLaren2020 = 93,
+        AlfaRomeo2020 = 94,
+        MyTeam = 255
+    }
+
+    public static class TeamIdentifier
+    {
+        private static readonly Dictionary<TeamId, string> TeamNames = new Dictionary<TeamId, string>()
+        {
+            { TeamId.Mercedes, "Mercedes" },
+            { TeamId.Ferrari, "Ferrari" },
+            { TeamId.RedBullRacing, "Red Bull Racing" },
+            { TeamId.Williams, "Williams" },
+            { TeamId.AstonMartin, "Aston Martin" },
+            { TeamId.Alpine, "Alpine" },
+            { TeamId.AlphaTauri, "AlphaTauri" },
+            { TeamId.Haas, "Haas" },
+            { TeamId.McLaren, "McLaren" },
+            { TeamId.AlfaRomeo, "Alfa Romeo" },
+            { TeamId.McLaren1988, "McLaren 1988" },
+            { TeamId.McLaren1991, "McLaren 1991" },
+            { TeamId.Williams1992, "Williams 1992" },
+            { TeamId.Ferrari1995, "Ferrari 1995" },
+            { TeamId.Williams1996, "Williams 1996" },
+            { TeamId.McLaren1998, "McLaren 1998" },
+            { TeamId.Ferrari2002, "Ferrari 2002" },
+            { TeamId.Ferrari2004, "Ferrari 2004" },
+            { TeamId.Renault2006, "Renault 2006" },
+            { TeamId.Ferrari2007, "Ferrari 2007" },
+            { TeamId.McLaren2008, "McLaren 2008" },
+            { TeamId.RedBull2010, "Red Bull 2010" },
+            { TeamId.McLaren1990, "McLaren 1990" },
+            { TeamId.Williams2003, "Williams 2003" },
+            { TeamId.Brawn2009, "Brawn 2009" },
+            { TeamId.F1GenericCar, "F1 Generic car" },
+            { TeamId.ArtGrandPrix19, "ART GP ’19" },
+            { TeamId.CamposRacing19, "Campos ’19" },
+            { TeamId.Carlin19, "Carlin ’19" },
+            { TeamId.SauberJuniorTeamByCharouz19, "Sauber Junior Charouz ’19" },
+            { TeamId.Dams19, "DAMS ’19" },
+            { TeamId.UniVirtuosi19, "UNI-Virtuosi ‘19" },
+            { TeamId.MpMotorsport19, "MP Motorsport ‘19" },
+            { TeamId.PremaRacing19, "Prema ’19" },
+            { TeamId.Trident19, "Trident ’19" },
+            { TeamId.BwtArden19, "Arden ’19" },
+            { TeamId.Benetton1994, "Benetton 1994" },
+            { TeamId.Benetton1995, "Benetton 1995" },
+            { TeamId.Ferrari2000, "Ferrari 2000" },
+            { TeamId.Jordan1991, "Jordan 1991" },
+            { TeamId.Ferrari1990, "Ferrari 1990" },
+            { TeamId.McLaren2010, "McLaren 2010" },
+            { TeamId.Ferrari2010, "Ferrari 2010" },
+            { TeamId.ArtGrandPrix20, "Art GP ‘20" },
+            { TeamId.CamposRacing20, "Campos ‘20" },
+            { TeamId.Carlin20, "Carlin ‘20" },
+            { TeamId.Charouz20, "Charouz ‘20" },
+            { TeamId.Dams20, "Dams ‘20" },
+            { TeamId.UniVirtuosi20, "Uni-Virtuosi ‘20" },
+            { TeamId.MpMotorsport20, "MP Motorsport ‘20" },
+            { TeamId.PremaRacing20, "Prema ‘20" },
+            { TeamId.Trident20, "Trident ‘20" },
+            { TeamId.Bwt20, "BWT ‘20" },
+            { TeamId.Hitech20, "Hitech ‘20" },
+            { TeamId.Mercedes2020, "Mercedes 2020" },
+            { TeamId.Ferrari2020, "Ferrari 2020" },
+            { TeamId.RedBull2020, "Red Bull 2020" },
+            { TeamId.Williams2020, "Williams 2020" },
+            { TeamId.RacingPoint2020, "Racing Point 2020" },
+            { TeamId.Renault2020, "Renault 2020" },
+            { TeamId.AlphaTauri2020, "Alpha Tauri 2020" },
+            { TeamId.Haas2020, "Haas 2020" },
+            { TeamId.McLaren2020, "McLaren 2020" },
+            { TeamId.AlfaRomeo2020, "Alfa Romeo 2020" },
+            { TeamId.MyTeam, "My Team" }
+        };
+
+        public static string GetTeamName(byte teamId)
+        {
+            if (TeamNames.TryGetValue((TeamId)teamId, out string teamName))
+            {
+                return teamName;
+            }
+            return "Equipe Desconhecida";
+        }
+    }
+}

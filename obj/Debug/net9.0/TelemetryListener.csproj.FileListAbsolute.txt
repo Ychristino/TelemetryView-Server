@@ -26,3 +26,4 @@ C:\Users\ychri\Documents\TelemetryView\TelemetryServer\bin\Debug\net9.0\Telemetr
 C:\Users\ychri\Documents\TelemetryView\TelemetryServer\bin\Debug\net9.0\TelemetryListener.pdb
 C:\Users\ychri\Documents\TelemetryView\TelemetryServer\obj\Debug\net9.0\TelemetryListener.genruntimeconfig.cache
 C:\Users\ychri\Documents\TelemetryView\TelemetryServer\obj\Debug\net9.0\ref\TelemetryListener.dll
+C:\Users\ychri\Documents\TelemetryView\TelemetryServer\obj\Debug\net9.0\TelemetryListener.sourcelink.json

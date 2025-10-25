@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TelemetryListener")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+61a8cd0ef1a6a866f1fab979baf8c927788a0bfc")]
 [assembly: System.Reflection.AssemblyProductAttribute("TelemetryListener")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TelemetryListener")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
