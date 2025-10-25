@@ -1,29 +1,36 @@
-
 namespace TelemetryServer
 {
     public static class GameIdentifier
     {
         public static (string Game, string Version) IdentifyGame(byte[] data)
         {
-            // Exemplo: F1 2020 (usado nas respostas anteriores)
-            if (data.Length >= 2 && data[0] == 0xE4 && data[1] == 0x07)
+            if (data.Length < 2)
             {
-                return ("F1", "2020");
+                return ("Desconhecido", "unknown");
             }
-            // F1 2024: O formato UDP 2024 usa um cabeçalho que começa com 0x07E8 (2024 em decimal).
-            // A especificação da EA para F1 24 detalha o m_packetFormat como 2024.
-            else if (data.Length >= 2 && data[0] == 0xE8 && data[1] == 0x07)
+
+            // Lê os dois primeiros bytes (m_packetFormat) como um uint16 Little-Endian
+            ushort packetFormat = BitConverter.ToUInt16(data, 0);
+
+            switch (packetFormat)
             {
-                return ("F1", "2024");
+                case 2020:
+                    return ("F1", "2020");
+                case 2021:
+                    return ("F1", "2021");
+                case 2022:
+                    return ("F1", "2022");
+                case 2023:
+                    return ("F1", "2023");
+                case 2024:
+                    return ("F1", "2024");
             }
-            // Assetto Corsa: O formato UDP usa uma estrutura diferente e um tamanho de pacote fixo.
-            // A documentação indica pacotes de tamanho 128 bytes para certos tipos de dados.
-            else if (data.Length == 128)
+
+            // Exemplo alternativo para outros jogos (pode ser impreciso)
+            if (data.Length == 128)
             {
-                // A inspeção de mais bytes pode ser necessária para evitar falsos positivos
-                return ("Assetto Corsa", "1.9");
+                return ("Assetto Corsa", "unknown");
             }
-            // Outros jogos...
 
             return ("Desconhecido", "unknown");
         }
