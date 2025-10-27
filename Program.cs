@@ -32,7 +32,14 @@ namespace TelemetryServer
             server.OnDataReceived += (IPEndPoint sender, byte[] data) =>
             {
                 Console.WriteLine($"Pacote recebido de: {sender.Address}:{sender.Port}");
-                router.RoutePacket(sender, data);
+                try
+                {
+                    router.RoutePacket(sender, data);
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Packet will be ignored!");
+                }
             };
 
             var serverTask = server.StartAsync();

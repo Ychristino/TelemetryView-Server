@@ -79,7 +79,6 @@ namespace TelemetryServer.Utilities
 
             var fileName = $"{DateTime.Now:yyyyMMdd}_lap{lapNumber}.csv";
             var filePath = Path.Combine(driverDirectory, fileName);
-            
             File.AppendAllText(filePath, line + Environment.NewLine);
         }
     }

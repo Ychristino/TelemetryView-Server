@@ -59,31 +59,5 @@ namespace TelemetryServer.Classes.f120
                 SurfaceType = telemetryStruct.m_surfaceType.ToArray();
             }
         }
-        public string getConfigurationFile()
-        {
-            return $"[{identifier}]" +
-                   $"\n__id=__id,0" +
-                   $"\nthrottle=Throttle,1" +
-                   $"\nbrake=Brake,2" +
-                   $"\nclutch=Clutch,3" +
-                   $"\ngear=Gear,4" +
-                   $"\nspeed=Speed,5";
-                //    $"\nengineRpm=EngineRpm,5" +
-                //    $"\nsteer=Steer,6" +
-        }
-        
-        public string getCurrentStatus()
-        {
-            var player = this.AllCarTelemetryData[this.PlayerCarIndex];
-
-            return $"{this.FrameIdentifier};" +
-                $"{player.Throttle};" +
-                $"{player.Brake};" +
-                $"{player.Clutch};" +
-                $"{player.Gear};" +
-                $"{player.Speed}";
-                // $"{player.EngineRpm};" +
-                // $"{player.Steer};" +
-        }
     }
 }
