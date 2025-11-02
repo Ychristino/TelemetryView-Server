@@ -26,6 +26,7 @@ namespace TelemetryServer.Processor.f120
 
         private static readonly string _gameName = "F1_2020";
         private string? _trackName;
+        private string? _sessionId;
         private Writer? _writer;
         private byte _currentLapNum;
         private bool _generatedConfigFile = false;
@@ -120,8 +121,8 @@ namespace TelemetryServer.Processor.f120
                 }
                 try
                 {
-                    _writer.WriteLine(_basicDataFileIdentifier, _driversName[telemetry.PlayerCarIndex], _currentLapNum, _exporter.exportBasicData(telemetry.PlayerCarIndex));
-                    _writer.WriteLine(_carDetailsFileIdentifier, _driversName[telemetry.PlayerCarIndex], _currentLapNum, _exporter.exportConfigurationDetailsData(telemetry.PlayerCarIndex));
+                    _writer.WriteLine(_basicDataFileIdentifier, _sessionId, _driversName[telemetry.PlayerCarIndex], _currentLapNum, _exporter.exportBasicData(telemetry.PlayerCarIndex));
+                    _writer.WriteLine(_carDetailsFileIdentifier, _sessionId, _driversName[telemetry.PlayerCarIndex], _currentLapNum, _exporter.exportConfigurationDetailsData(telemetry.PlayerCarIndex));
                 }
                 catch (Exception ex)
                 {
@@ -162,6 +163,7 @@ namespace TelemetryServer.Processor.f120
 
                         OnSessionPacketReceived?.Invoke(sessionClass);
                         _trackName = TrackIdentifier.GetTrackName(sessionClass.TrackId);
+                        _sessionId = sessionClass.SessionUID.ToString();
                         frameManager.AddPacket(sessionClass.FrameIdentifier, PacketTypeIdentifier.SessionIdentifier, sessionClass);
                         break;
 

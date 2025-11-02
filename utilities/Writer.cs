@@ -61,7 +61,7 @@ namespace TelemetryServer.Utilities
             File.WriteAllText(filePath, line + Environment.NewLine);
         }
         
-        public void WriteLine(string identifier, string driverName, int lapNumber, string line)
+        public void WriteLine(string identifier, string sessionId, string driverName, int lapNumber, string line)
         {
             if (string.IsNullOrWhiteSpace(driverName))
                 throw new ArgumentException("O nome do piloto não pode ser nulo ou vazio.", nameof(driverName));
@@ -69,15 +69,17 @@ namespace TelemetryServer.Utilities
                 throw new ArgumentException("O nome do piloto não pode ser nulo ou vazio.", nameof(identifier));
 
             var sanitizedDriverName = SanitizeFileName(driverName);
+            var sanitizedLapDirectory = SanitizeFileName($"{DateTime.Now:yyyyMMdd}_${sessionId}_lap{lapNumber}");
             var sanitizedIdentifier = SanitizeFileName(identifier);
-            var driverDirectory = Path.Combine(_rootDirectory, sanitizedIdentifier, sanitizedDriverName);
+            var driverDirectory = Path.Combine(_rootDirectory, sanitizedDriverName, sanitizedLapDirectory, sanitizedIdentifier);
 
             if (!Directory.Exists(driverDirectory))
             {
                 Directory.CreateDirectory(driverDirectory);
             }
 
-            var fileName = $"{DateTime.Now:yyyyMMdd}_lap{lapNumber}.csv";
+            // var fileName = $"{DateTime.Now:yyyyMMdd}_lap{lapNumber}.csv";
+            var fileName = $"data.csv";
             var filePath = Path.Combine(driverDirectory, fileName);
             File.AppendAllText(filePath, line + Environment.NewLine);
         }
